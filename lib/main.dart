@@ -1,8 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'dart:io';
-
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -88,14 +88,25 @@ class _MainScreenState extends State<MainScreen> {
                       children: [
                         Expanded(
                           child: MacosTextField(
-                            placeholder: "Cerca",
+                            placeholder: "Ask DeepSeek...",
                             padding: EdgeInsets.all(20),
+                            focusedDecoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(8))),
+                            placeholderStyle:
+                                TextStyle(color: Color(0X60FFFFFF)),
                             decoration: BoxDecoration(
-                                color: Color(0x33ffffff),
-                                borderRadius: BorderRadius.all(Radius.circular(8))),
+                                color: Color.fromARGB(22, 255, 255, 255),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8))),
                           ),
                         ),
-                        IconButton(onPressed: () { }, icon: Icon(Icons.arrow_upward_rounded))
+                        SizedBox(width: 20,),
+                        IconButton(
+                            onPressed: () {},
+                            color: const Color.fromARGB(255, 0, 121, 251),
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    WidgetStateProperty.all(const Color.fromARGB(64, 0, 174, 255))),
+                            icon: Icon(Icons.arrow_upward_rounded))
                       ],
                     ),
                   ),
