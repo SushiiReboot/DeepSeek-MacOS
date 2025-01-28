@@ -47,44 +47,65 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return MacosScaffold(
-          children: [
-            ResizablePane(
-              // Sidebar or Resizable Pane
-              minSize: 200,
-              startSize: 200,
-              builder: (context, scrollController) {
-                return Padding(
-                  padding: const EdgeInsets.only(top: 50.0),
-                  child: SidebarItems(
-                      items: items_test,
-                      currentIndex: pageIndex,
-                      onChanged: (i) {
-                        setState(() {
-                          pageIndex = i;
-                        });
-                      }),
-                );
-              },
-              resizableSide: ResizableSide.right,
-            ),
-            ContentArea(
-              // Main content
-              builder: (context, scrollController) {
-                return Center(
-                  child: Text(
-                    "Welcome to DeepSeek UI",
-                    style: MacosTheme.of(context).typography.headline,
+    return Builder(builder: (context) {
+      return MacosScaffold(
+        children: [
+          ResizablePane(
+            // Sidebar or Resizable Pane
+            minSize: 200,
+            startSize: 200,
+            builder: (context, scrollController) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 50.0),
+                child: SidebarItems(
+                    items: items_test,
+                    currentIndex: pageIndex,
+                    onChanged: (i) {
+                      setState(() {
+                        pageIndex = i;
+                      });
+                    }),
+              );
+            },
+            resizableSide: ResizableSide.right,
+          ),
+          ContentArea(
+            // Main content
+            builder: (context, scrollController) {
+              return Column(
+                children: [
+                  Expanded(
+                      child: Center(
+                    child: Text(
+                      "Welcome to DeepSeek V3!",
+                      style: MacosTheme.of(context).typography.headline,
+                    ),
+                  )),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Expanded(
+                          child: MacosTextField(
+                            placeholder: "Cerca",
+                            padding: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                                color: Color(0x33ffffff),
+                                borderRadius: BorderRadius.all(Radius.circular(8))),
+                          ),
+                        ),
+                        IconButton(onPressed: () { }, icon: Icon(Icons.arrow_upward_rounded))
+                      ],
+                    ),
                   ),
-                );
-              },
-            ),
-          ],
-        );
-      }
-    );
+                ],
+              );
+            },
+          ),
+        ],
+      );
+    });
   }
 }
 
